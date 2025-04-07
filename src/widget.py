@@ -1,6 +1,4 @@
 import datetime
-# from masks import get_mask_card_number
-# from masks import get_mask_account
 from src import masks
 
 def get_data(data_string: str) -> str:
