@@ -1,5 +1,7 @@
 import datetime
+
 from src import masks
+
 
 def get_data(data_string: str) -> str:
     """Функция преобразовния строки из формата "2024-03-11T02:26:18.671407"
@@ -9,14 +11,11 @@ def get_data(data_string: str) -> str:
 
 
 def mask_account_card(bank_details: str) -> str:
-    """ Функция маскирования карт и счетов клиента.
-     Использован импорт функций их файла masks"""
+    """Функция маскирования карт и счетов клиента.
+    Использован импорт функций их файла masks"""
     list_bank_details = bank_details.split(" ")
     if len(list_bank_details[-1]) == 16:
         processed_data = f"{" ".join(list_bank_details[0:-1])} {masks.get_mask_card_number(list_bank_details[-1])}"
     elif len(list_bank_details[-1]) == 20:
         processed_data = f"{" ".join(list_bank_details[0:-1])} {masks.get_mask_account(list_bank_details[-1])}"
     return processed_data
-
-
-
