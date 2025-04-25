@@ -8,13 +8,16 @@ def card_number():
     return 7000792289606361
 
 
-def test_get_mask_card_number(card_number):
-    assert get_mask_card_number(card_number) == "7000 79** **** 6361"
+@pytest.mark.parametrize(
+    "card_number, expected_result", [("3782822463100056", "3782 82** **** 0056")]
+)
+def test_get_mask_card_number(card_number, expected_result):
+    assert get_mask_card_number(card_number) == expected_result
 
 
-def test_get_mask_card_number_invalid_card_number():
+def test_get_mask_card_number_invalid_card_number(card_number):
     with pytest.raises(ValueError):
-        get_mask_card_number(123)
+        get_mask_card_number("Invalid card number")
 
 
 def test_get_mask_card_number_absent_card_number():
@@ -22,17 +25,21 @@ def test_get_mask_card_number_absent_card_number():
         get_mask_card_number("")
 
 
+@pytest.fixture
 def account():
     return 73654108430135874305
 
 
-def test_get_mask_account():
-    assert get_mask_account(account()) == "**4305"
+@pytest.mark.parametrize(
+    "account, expected_result", [("11123456789012345600", "**5600")]
+)
+def test_get_mask_account(account, expected_result):
+    assert get_mask_account(account) == expected_result
 
 
-def test_get_mask_account_invalid_account_number():
+def test_get_mask_account_invalid_account(account):
     with pytest.raises(ValueError):
-        get_mask_account(123)
+        get_mask_account("Invalid account")
 
 
 def test_get_mask_account_absent_account_number():

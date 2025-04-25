@@ -17,8 +17,9 @@ def get_mask_account(account_number: Union[str | int]) -> str:
     """Принимает на вход номер счета и возвращает его маску."""
 
     account_str = str(account_number)
-    if len(account_str) < 4:
-        raise ValueError("Номер счёта должен содержать минимум 4 цифры.")
+    if len(account_str) != 20:
+        raise ValueError("Номер счёта должен содержать ровно 20 цифр.")
+
     masked_account = f"**{account_str[-4:]}"
 
     return masked_account
