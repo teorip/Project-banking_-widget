@@ -124,12 +124,21 @@ state (по умолчанию 'EXECUTED'). Функция возвращает 
 ```
 poetry add --gpoup dev pytest
 ```
-Для анализа покрытия кода надо поставить библиотеку 
-pytest-cov
+##### Для анализа покрытия кода установить библиотеку 
+pytest-cov.
 ```
 poetry add --group dev pytest-cov
 ```
-Применённые тест-кейсы:
+pytest-cov с названием версии отобразится в группе dev файла pyprojeck.toml 
+##### Установить Coverage.py через pip:
+```
+pip install coverage
+```
+Использование с Pytest:
+```
+pip install pytest-cov
+```
+#### Применённые тест-кейсы:
 ##### Модуль masks
 ###### Функция *get_mask_card_number*
 * Тестирование правильности маскирования номера карты.
