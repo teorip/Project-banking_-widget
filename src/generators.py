@@ -1,4 +1,5 @@
 def filter_by_currency(transactions: list, currency: str):
+    """ Фильтрует список транзакций по валюте"""
     if not transactions or not currency:
         raise ValueError("Транзакции в заданной валюте отсутствуют")
     by_currency = filter(
@@ -12,6 +13,7 @@ def filter_by_currency(transactions: list, currency: str):
 
 
 def transaction_descriptions(transactions: list):
+    """Выводит список описаний транзакций"""
     if not transactions:
         raise ValueError("Введены пустые транзакции")
     description = (
@@ -23,6 +25,7 @@ def transaction_descriptions(transactions: list):
 
 
 def card_number_generator(start: int, end: int):
+    """Генерирует номер карты в заданном диапазоне"""
     for card in range(start, end + 1):
         card = f"{card:016d}"
         card = f"{card[:4]} {card[4:8]} {card[8:12]} {card[12:]}"
