@@ -13,7 +13,8 @@ def test_get_mask_card_number(card_number: int, expected_result: str) -> None:
     assert get_mask_card_number(card_number) == expected_result
 
 
-# Проверка работы функции на различных входных форматах номеров карт, включая граничные случаи и нестандартные длины номеров.
+# Проверка работы функции на различных входных форматах номеров карт,
+# включая граничные случаи и нестандартные длины номеров.
 # Проверка, что функция корректно обрабатывает входные строки, где отсутствует номер карты.
 def test_get_mask_card_number_invalid_card_number(card_number_false: Any) -> None:
     with pytest.raises(
