@@ -1,0 +1,1 @@
+my_function okmy_function error: <class 'Exception'> Inputs: (2, 0), {}, Result: ZeroDivisionError: division by zero
