@@ -1,5 +1,5 @@
 def filter_by_currency(transactions: list, currency: str):
-    """ Фильтрует список транзакций по валюте"""
+    """Фильтрует список транзакций по валюте"""
     if not transactions or not currency:
         raise ValueError("Транзакции в заданной валюте отсутствуют")
     by_currency = filter(
