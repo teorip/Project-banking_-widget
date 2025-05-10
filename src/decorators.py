@@ -10,21 +10,24 @@ def log(filename=None):
         Эта функция будет использоваться для декорирования других функций."""
 
         @wraps(func)
-        def wrapper(arg1, arg2):
+        def wrapper(*args, **kwargs):
             """Декоратор, который используется для сохранения метаданных функции `func`."""
 
             try:
-                result = func(arg1, arg2)
+                result = func(*args, **kwargs)
                 if filename:
                     with open(filename, "a") as f:
-                        f.write("my_function ok\n")
-                elif filename is None:
-                    print(f"my_function ok. Inputs: {arg1}, {arg2}, Result: {result}")
+                        f.write("my_function ok")
+                elif not filename:
+                    print(f"my_function ok. Inputs: {args}, {kwargs}, Result: {result}")
                 return result
-            except ValueError as result:
-                raise ValueError(
-                    f"my_function error. Inputs: {arg1}, {arg2}, Result: {result}"
-                )
+            except Exception as e:
+                with open(filename, "a") as f:
+                    f.write(
+                        f"my_function error: {Exception} Inputs: {args}, {kwargs}, Result: {e}\n"
+                    )
+
+                raise Exception(e)
 
         return wrapper
 
